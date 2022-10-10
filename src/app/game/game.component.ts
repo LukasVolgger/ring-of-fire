@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-
+  drawCardAnimation = false;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  drawCard() {
+    this.drawCardAnimation = true;
   }
 
 }
