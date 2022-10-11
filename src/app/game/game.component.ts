@@ -23,14 +23,16 @@ export class GameComponent implements OnInit {
   }
 
   drawCard() {
-    if (!this.drawCardAnimation) {
+    if (!this.drawCardAnimation) { // Only draw a card when animation is not running
       this.drawCardAnimation = true;
-      this.currentCard = this.game.stack.pop();
-      console.log(this.currentCard);
+      this.currentCard = this.game.stack.pop(); // With pop() the last card from the stack is assigned to the variable currentCard
+
+      console.log('Current card: ', this.currentCard);
 
       setTimeout(() => {
+        this.game.playedCards.push(this.currentCard);
         this.drawCardAnimation = false;
-      }, 1000)
+      }, 1200)
     }
   }
 

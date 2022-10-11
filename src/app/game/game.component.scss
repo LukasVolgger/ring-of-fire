@@ -12,6 +12,10 @@
     }
 }
 
+.card {
+    right: 25px;
+}
+
 .top-card {
     cursor: pointer;
     transition: all 125ms ease-in-out;
@@ -23,7 +27,11 @@
 .draw-card {
     // Must be the same as the animation of 100% so that the card remains lying
     transform: scale(1) translateX(240px) translateY(-240px) rotate(12deg);
-    animation: draw-card-animation 1.25s ease-in-out;
+    animation: draw-card-animation 1.2s ease-in-out;
+}
+
+.played-card {
+    transform: scale(1) translateX(240px) translateY(-240px) rotate(12deg);
 }
 
 @keyframes draw-card-animation {
