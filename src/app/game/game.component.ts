@@ -8,6 +8,7 @@ import { Game } from 'src/models/game';
 })
 export class GameComponent implements OnInit {
   game: Game;
+  currentCard: string = '';
   drawCardAnimation = false;
 
   constructor() { }
@@ -22,7 +23,15 @@ export class GameComponent implements OnInit {
   }
 
   drawCard() {
-    this.drawCardAnimation = true;
+    if (!this.drawCardAnimation) {
+      this.drawCardAnimation = true;
+      this.currentCard = this.game.stack.pop();
+      console.log(this.currentCard);
+
+      setTimeout(() => {
+        this.drawCardAnimation = false;
+      }, 1000)
+    }
   }
 
 }

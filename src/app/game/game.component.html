@@ -2,6 +2,6 @@
     <div class="card-stack centered">
         <img src="./../../assets/img/cards/card_cover.png" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
         <img src="./../../assets/img/cards/card_cover.png" alt="" (click)="drawCard()" class="top-card" style="right: 25px;">
-        <img src="./../../assets/img/cards/spades_1.png" alt="" *ngIf="drawCardAnimation" class="draw-card" style="right: 25px;">
+        <img src="./../../assets/img/cards/{{ currentCard }}.png" alt="" *ngIf="drawCardAnimation" class="draw-card" style="right: 25px;">
     </div>
 </div>
