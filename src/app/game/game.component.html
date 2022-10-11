@@ -1,4 +1,5 @@
-<app-player></app-player>
+<!-- TODO Ask: let i = index; Ask: [name]="player" -->
+<app-player class="player-position" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 140)}" [name]="player"></app-player>
 
 <div class="content centered fullscreen">
     <div class="card-stack centered">
@@ -7,7 +8,7 @@
         <img src="./../../assets/img/cards/card_cover.png" alt="" (click)="drawCard()" class="card top-card">
 
         <!-- Played cards -->
-        <!-- TODO: !!! -->
+        <!-- TODO Ask: *ngfor -->
         <img src="./../../assets/img/cards/{{ playedCard }}.png" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
 
         <!-- Current card (Animation) -->
