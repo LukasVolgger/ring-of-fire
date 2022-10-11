@@ -1,0 +1,22 @@
+.content {
+    position: absolute;
+    top: 128px;
+    right: 0;
+    width: 300px;
+    background-color: white;
+    border-top-left-radius: 64px;
+    border-bottom-left-radius: 64px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    img {
+        width: 100px;
+        object-fit: contain;
+        border-radius: 50%;
+    }
+    span {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
