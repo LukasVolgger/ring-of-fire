@@ -1,4 +1,4 @@
-<app-player class="player-position" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 140)}" [name]="player"></app-player>
+<app-player class="player-position" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 90)}" [name]="player" [playerActive]="i == game.currentPlayer"></app-player>
 
 <div class="content centered fullscreen">
     <div class="card-stack centered">

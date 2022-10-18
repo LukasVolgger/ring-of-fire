@@ -1,6 +1,6 @@
-.content {
+.player {
     width: 300px;
-    background-color: white;
+    background-color: rgba(115, 115, 115, 0.8);
     border-top-left-radius: 64px;
     border-bottom-left-radius: 64px;
     padding: 16px;
@@ -8,7 +8,7 @@
     align-items: center;
     gap: 16px;
     img {
-        width: 80px;
+        width: 40px;
         object-fit: contain;
         border-radius: 50%;
     }
@@ -16,4 +16,8 @@
         font-size: 24px;
         font-weight: 600;
     }
+}
+
+.player-active {
+    background-color: rgba(240, 219, 62, 0.8);
 }
