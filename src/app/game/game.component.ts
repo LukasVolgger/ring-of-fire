@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
+import { ɵallowPreviousPlayerStylesMerge } from '@angular/animations/browser';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -38,12 +39,12 @@ export class GameComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPlayerComponent, {
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent, { // Reference to component
 
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(playerName => { // Gets the name of the input from dialog-add-player
+      this.game.players.push(playerName);
     });
   }
 }
