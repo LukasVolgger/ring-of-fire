@@ -29,6 +29,8 @@ export class GameComponent implements OnInit {
       this.drawCardAnimation = true;
       this.currentCard = this.game.stack.pop(); // With pop() the last card from the stack is assigned to the variable currentCard
 
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; // e.g. 0%3 = 0; 1%3 = 1; 2%3 = 2; ...
       console.log('Current card: ', this.currentCard);
 
       setTimeout(() => {
