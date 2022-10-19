@@ -46,7 +46,9 @@ export class GameComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(playerName => { // Gets the name of the input from dialog-add-player
-      this.game.players.push(playerName);
+      if (playerName && playerName.length > 0) {
+        this.game.players.push(playerName);
+      }
     });
   }
 }
