@@ -3,14 +3,14 @@
 <div class="content centered fullscreen">
     <div class="card-stack centered">
         <!-- Card stack -->
-        <img src="./../../assets/img/cards/card_cover.png" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
-        <img src="./../../assets/img/cards/card_cover.png" alt="" (click)="drawCard()" class="card top-card">
+        <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
+        <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" (click)="drawCard()" class="card top-card">
 
         <!-- Played cards -->
-        <img src="./../../assets/img/cards/{{ playedCard }}.png" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
+        <img src="./../../assets/img/cards/{{ playedCard }}.svg" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
 
         <!-- Current card (Animation) -->
-        <img src="./../../assets/img/cards/{{ currentCard }}.png" alt="" *ngIf="drawCardAnimation" class="card draw-card">
+        <img src="./../../assets/img/cards/{{ currentCard }}.svg" alt="" *ngIf="drawCardAnimation" class="card draw-card">
     </div>
 </div>
 
