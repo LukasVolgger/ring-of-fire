@@ -3,6 +3,8 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { ɵallowPreviousPlayerStylesMerge } from '@angular/animations/browser';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -13,7 +15,16 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   drawCardAnimation = false;
 
-  constructor(public dialog: MatDialog) { }
+  item$: Observable<any>;
+
+  constructor(private firestore: Firestore, public dialog: MatDialog) {
+    const coll = collection(firestore, 'games');
+    this.item$ = collectionData(coll);
+
+    this.item$.subscribe((games) => {
+      console.log('Updated games: ', games);
+    })
+  }
 
   ngOnInit(): void {
     this.newGame();
