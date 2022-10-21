@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { ɵallowPreviousPlayerStylesMerge } from '@angular/animations/browser';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { stringify } from '@firebase/util';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -15,26 +14,33 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   drawCardAnimation = false;
 
-  item$: Observable<any>;
-
-  constructor(private firestore: Firestore, public dialog: MatDialog) {
-    const coll = collection(firestore, 'games');
-    this.item$ = collectionData(coll);
-
-    this.item$.subscribe((games) => {
-      console.log('Updated games: ', games);
-    })
+  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
+    this.getDataFromFirestore();
   }
 
   ngOnInit(): void {
     this.newGame();
   }
 
+  // ############################################################################################### GAME
+
+  /**
+   * Initializes a new game by creating an object instance of Game()
+   * Adds the game to the Firestore
+   */
   newGame() {
     this.game = new Game();
-    console.log(this.game);
+    // console.log(this.game);
+
+    let gameAsString = stringify(this.game);
+    // console.log(gameAsString);
+    this.addToFirestore('games', gameAsString);
   }
 
+  /**
+   * Draws a card unless the animation is currently playing
+   * Increments the index this.game.currentPlayer++; so that on the next draw it is the next player's turn
+   */
   drawCard() {
     if (!this.drawCardAnimation) { // Only draw a card when animation is not running
       this.drawCardAnimation = true;
@@ -47,19 +53,42 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.drawCardAnimation = false;
-      }, 1200)
+      }, 1200) // Must be the same time as SCSS: draw-card-animation
     }
   }
 
+  /**
+   * Opens the dialog component DialogAddPlayerComponent
+   */
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogAddPlayerComponent, { // Reference to component
-
-    });
+    const dialogRef = this.dialog.open(DialogAddPlayerComponent, {});
 
     dialogRef.afterClosed().subscribe(playerName => { // Gets the name of the input from dialog-add-player
       if (playerName && playerName.length > 0) {
         this.game.players.push(playerName);
       }
     });
+  }
+
+  // ############################################################################################### FIRESTORE
+
+  // TODO Make me reusable
+  /**
+   * Fetches the data from the Firestore
+   */
+  getDataFromFirestore() {
+    this.firestore.collection('games').valueChanges().subscribe((game) => {
+      console.warn('Firestore update: ', game);
+    })
+  }
+
+  // TODO Make me reusable
+  /**
+   * Adds data to the Firestore
+   * @param collection The collection of the Firestore
+   * @param element The element in the collection
+   */
+  addToFirestore(collection: string, element: string) {
+    this.firestore.collection(collection).add({ 'game': element });
   }
 }

@@ -6,6 +6,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./game-info.component.scss']
 })
 export class GameInfoComponent implements OnInit, OnChanges {
+  // Title and description for each of the 13 cards of one suit
   cardAction = [
     { title: 'Waterfall', description: 'Everyone has to start drinking at the same time. As soon as player 1 stops drinking, player 2 may stop drinking. Player 3 may stop as soon as player 2 stops drinking, and so on.' },
     { title: 'You', description: 'You decide who drinks!' },
@@ -32,6 +33,13 @@ export class GameInfoComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+    this.displayGameInfo();
+  }
+
+  /**
+   * Displays the title and description of the respective card
+   */
+  displayGameInfo() {
     if (this.card) {
       // console.log('card: ' + this.card.split('_')[0] + ', ' + this.card.split('_')[1]);
       let cardNumber = +this.card.split('_')[1] - 1;
@@ -40,5 +48,4 @@ export class GameInfoComponent implements OnInit, OnChanges {
       this.description = this.cardAction[cardNumber].description;
     }
   }
-
 }
