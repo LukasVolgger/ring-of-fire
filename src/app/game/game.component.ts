@@ -23,8 +23,8 @@ export class GameComponent implements OnInit {
 
     this.route.params.subscribe((param) => {
       console.log('Game ID: ', param['gameID']);
-      // let gameID = param['gameID']; TODO Reactivate!
-      let gameID = 'SNFkvCsUN9szBtvng9iY'; // TODO Remove! Only for testing
+      let gameID = param['gameID'];
+      // let gameID = 'SNFkvCsUN9szBtvng9iY'; // TODO Remove! Only for testing
 
       this.getDataFromFirestore(gameID);
     });
@@ -107,12 +107,11 @@ export class GameComponent implements OnInit {
    * @param game The game object from Firestore
    */
   updateLocalData(game) {
-    this.game.currentPlayer = game.currentPlayer;
-    this.game.playedCards = game.playedCards;
-    this.game.players = game.players;
-    this.game.stack = game.stack;
+    this.game.currentPlayer = game.game.currentPlayer;
+    this.game.playedCards = game.game.playedCards;
+    this.game.players = game.game.players;
+    this.game.stack = game.game.stack;
 
-    console.warn(game.players);
     console.log('Local update', this.game);
   }
 }
