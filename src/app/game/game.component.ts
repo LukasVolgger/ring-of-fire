@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GameComponent implements OnInit {
   game: Game;
+  gameID: string;
   currentCard: string = '';
   drawCardAnimation = false;
 
@@ -23,9 +24,9 @@ export class GameComponent implements OnInit {
 
     this.route.params.subscribe((param) => {
       console.log('Game ID: ', param['gameID']);
-      let gameID = param['gameID'];
+      this.gameID = param['gameID'];
 
-      this.getDataFromFirestore(gameID);
+      this.getDataFromFirestore(this.gameID);
     });
   }
 
@@ -54,9 +55,13 @@ export class GameComponent implements OnInit {
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; // e.g. 0%3 = 0; 1%3 = 1; 2%3 = 2; ...
       console.log('Current card: ', this.currentCard);
 
+      // this.updateFirestore();
+
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.drawCardAnimation = false;
+
+        this.updateFirestore();
       }, 1200) // Must be the same time as SCSS: draw-card-animation
     }
   }
@@ -69,17 +74,50 @@ export class GameComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(playerName => { // Gets the name of the input from dialog-add-player
       if (playerName && playerName.length > 0) {
-        this.game.players.push(playerName);
+        this.addPlayer(playerName);
       }
     });
+  }
+
+  /**
+   * Adds a new player to the current game instance
+   * @param playerName The name of the player
+   */
+  addPlayer(playerName) {
+    this.game.players.push(playerName);
+    this.updateFirestore();
+  }
+
+  /**
+ * Updates the local variables
+ * @param game The game object from Firestore
+ */
+  updateLocalData(game: any) {
+    this.game.currentPlayer = game.currentPlayer;
+    this.game.playedCards = game.playedCards; // FIXME = undefined
+    this.game.players = game.players;
+    this.game.stack = game.stack;
+
+    console.log('Local update: ', this.game);
   }
 
   // ############################################################################################### FIRESTORE
 
   /**
+   * CRUD => CREATE
+   * Adds data to the Firestore
+   * @param collection The collection of the Firestore
+   * @param element The element in the collection
+   */
+  public addToFirestore(collection: string, element: object) {
+    this.firestore.collection(collection).add({ 'game': element });
+  }
+
+  /**
+   * CRUD => READ
    * Fetches the data from the Firestore
    */
-  getDataFromFirestore(gameID) {
+  public getDataFromFirestore(gameID) {
     this.firestore
       .collection('games')
       .doc(gameID)
@@ -91,24 +129,16 @@ export class GameComponent implements OnInit {
   }
 
   /**
-   * Adds data to the Firestore
-   * @param collection The collection of the Firestore
-   * @param element The element in the collection
+   * CRUD => UPDATE
+   * Updates the data in the Firestore
    */
-  addToFirestore(collection: string, element: object) {
-    this.firestore.collection(collection).add({ 'game': element });
+  public updateFirestore() {
+    this.firestore
+      .collection('games')
+      .doc(this.gameID)
+      .update(this.game.toJSON());
+
+    // console.log(this.game.toJSON());
   }
 
-  /**
-   * Updates the local variables
-   * @param game The game object from Firestore
-   */
-  updateLocalData(game) {
-    this.game.currentPlayer = game.currentPlayer;
-    this.game.playedCards = game.playedCards;
-    this.game.players = game.players;
-    this.game.stack = game.stack;
-
-    console.log('Local update', this.game);
-  }
 }
