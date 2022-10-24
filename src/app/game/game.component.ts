@@ -30,11 +30,10 @@ export class GameComponent implements OnInit {
    */
   newGame() {
     this.game = new Game();
-    // console.log(this.game);
+    // console.log('Game Object: ', this.game);
+    // console.log('Game JSON: ', this.game.toJSON());
 
-    let gameAsString = stringify(this.game);
-    // console.log(gameAsString);
-    this.addToFirestore('games', gameAsString);
+    this.addToFirestore('games', this.game.toJSON());
   }
 
   /**
@@ -88,7 +87,7 @@ export class GameComponent implements OnInit {
    * @param collection The collection of the Firestore
    * @param element The element in the collection
    */
-  addToFirestore(collection: string, element: string) {
+  addToFirestore(collection: string, element: object) {
     this.firestore.collection(collection).add({ 'game': element });
   }
 }
