@@ -43,12 +43,10 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MatDialogModule,
     MatInputModule,
     MatCardModule,
-    // TODO ASK: Why these are imported when install angularfire?
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
-    // TODO ASK: Manual imports
     AngularFireModule,
     AngularFireAnalyticsModule,
     AngularFirestoreModule,

@@ -5,7 +5,7 @@ import { StartScreenComponent } from './start-screen/start-screen.component';
 
 const routes: Routes = [
   { path: "", component: StartScreenComponent },
-  { path: "game", component: GameComponent }
+  { path: "game/:gameID", component: GameComponent } // Access the game with the document ID from Firestore
 ];
 
 @NgModule({

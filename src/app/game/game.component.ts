@@ -3,7 +3,7 @@ import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { stringify } from '@firebase/util';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -14,12 +14,20 @@ export class GameComponent implements OnInit {
   currentCard: string = '';
   drawCardAnimation = false;
 
-  constructor(private firestore: AngularFirestore, public dialog: MatDialog) {
-    this.getDataFromFirestore();
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {
+
   }
 
   ngOnInit(): void {
     this.newGame();
+
+    this.route.params.subscribe((param) => {
+      console.log('Game ID: ', param['gameID']);
+      // let gameID = param['gameID']; TODO Reactivate!
+      let gameID = 'SNFkvCsUN9szBtvng9iY'; // TODO Remove! Only for testing
+
+      this.getDataFromFirestore(gameID);
+    });
   }
 
   // ############################################################################################### GAME
@@ -33,7 +41,7 @@ export class GameComponent implements OnInit {
     // console.log('Game Object: ', this.game);
     // console.log('Game JSON: ', this.game.toJSON());
 
-    this.addToFirestore('games', this.game.toJSON());
+    // this.addToFirestore('games', this.game.toJSON());
   }
 
   /**
@@ -71,17 +79,20 @@ export class GameComponent implements OnInit {
 
   // ############################################################################################### FIRESTORE
 
-  // TODO Make me reusable
   /**
    * Fetches the data from the Firestore
    */
-  getDataFromFirestore() {
-    this.firestore.collection('games').valueChanges().subscribe((game) => {
-      console.warn('Firestore update: ', game);
-    })
+  getDataFromFirestore(gameID) {
+    this.firestore
+      .collection('games')
+      .doc(gameID)
+      .valueChanges()
+      .subscribe((game) => {
+        console.log('Firestore update: ', game);
+        this.updateLocalData(game);
+      })
   }
 
-  // TODO Make me reusable
   /**
    * Adds data to the Firestore
    * @param collection The collection of the Firestore
@@ -89,5 +100,19 @@ export class GameComponent implements OnInit {
    */
   addToFirestore(collection: string, element: object) {
     this.firestore.collection(collection).add({ 'game': element });
+  }
+
+  /**
+   * Updates the local variables
+   * @param game The game object from Firestore
+   */
+  updateLocalData(game) {
+    this.game.currentPlayer = game.currentPlayer;
+    this.game.playedCards = game.playedCards;
+    this.game.players = game.players;
+    this.game.stack = game.stack;
+
+    console.warn(game.players);
+    console.log('Local update', this.game);
   }
 }
