@@ -94,14 +94,14 @@ export class GameComponent implements OnInit {
  */
   updateLocalData(game: any) {
     this.game.currentPlayer = game.currentPlayer;
-    this.game.playedCards = game.playedCards; // FIXME = undefined
+    this.game.playedCards = game.playedCards;
     this.game.players = game.players;
     this.game.stack = game.stack;
 
     console.log('Local update: ', this.game);
   }
 
-  // ############################################################################################### FIRESTORE
+  // ############################################################################################### FIRESTORE (CRUD)
 
   /**
    * CRUD => CREATE
