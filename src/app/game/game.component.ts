@@ -12,8 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class GameComponent implements OnInit {
   game: Game;
   gameID: string;
-  currentCard: string = '';
-  drawCardAnimation = false;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {
 
@@ -47,19 +45,19 @@ export class GameComponent implements OnInit {
    * Increments the index this.game.currentPlayer++; so that on the next draw it is the next player's turn
    */
   drawCard() {
-    if (!this.drawCardAnimation) { // Only draw a card when animation is not running
-      this.drawCardAnimation = true;
-      this.currentCard = this.game.stack.pop(); // With pop() the last card from the stack is assigned to the variable currentCard
+    if (!this.game.drawCardAnimation) { // Only draw a card when animation is not running
+      this.game.drawCardAnimation = true;
+      this.game.currentCard = this.game.stack.pop(); // With pop() the last card from the stack is assigned to the variable currentCard
 
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; // e.g. 0%3 = 0; 1%3 = 1; 2%3 = 2; ...
-      console.log('Current card: ', this.currentCard);
+      console.log('Current card: ', this.game.currentCard);
 
-      // this.updateFirestore();
+      this.updateFirestore(); // Here must also be updated because otherwise the draw card animation is not synchronized 
 
       setTimeout(() => {
-        this.game.playedCards.push(this.currentCard);
-        this.drawCardAnimation = false;
+        this.game.playedCards.push(this.game.currentCard);
+        this.game.drawCardAnimation = false;
 
         this.updateFirestore();
       }, 1200) // Must be the same time as SCSS: draw-card-animation
@@ -97,6 +95,8 @@ export class GameComponent implements OnInit {
     this.game.playedCards = game.playedCards;
     this.game.players = game.players;
     this.game.stack = game.stack;
+    this.game.currentCard = game.currentCard;
+    this.game.drawCardAnimation = game.drawCardAnimation;
 
     console.log('Local update: ', this.game);
   }

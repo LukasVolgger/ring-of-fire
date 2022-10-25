@@ -10,11 +10,11 @@
         <img src="./../../assets/img/cards/{{ playedCard }}.svg" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
 
         <!-- Current card (Animation) -->
-        <img src="./../../assets/img/cards/{{ currentCard }}.svg" alt="" *ngIf="drawCardAnimation" class="card draw-card">
+        <img src="./../../assets/img/cards/{{ game.currentCard }}.svg" alt="" *ngIf="game.drawCardAnimation" class="card draw-card">
     </div>
 </div>
 
-<app-game-info [card]="currentCard"></app-game-info>
+<app-game-info [card]="game.currentCard"></app-game-info>
 
 <button mat-fab color="primary" class="add-player-btn" (click)="openDialog()">
     <mat-icon>add</mat-icon>
