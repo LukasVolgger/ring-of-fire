@@ -11,7 +11,6 @@ export class AppComponent {
 
 // ########################################################################################### DEVELOPMENT PAUSED
 // Paused on 25.10.2022
-// FIXME Avoid drawing cards before a player name was added
 // TODO Limit players to e.g. 4
 // TODO Add dialog to edit/delete player! Edit: title, img | delete: player
 // TODO Implement game over function and screen when drawing last card from stack

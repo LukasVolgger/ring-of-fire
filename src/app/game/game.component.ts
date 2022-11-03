@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
    * Increments the index this.game.currentPlayer++; so that on the next draw it is the next player's turn
    */
   drawCard() {
-    if (!this.game.drawCardAnimation) { // Only draw a card when animation is not running
+    if (!this.game.drawCardAnimation && this.game.players.length > 0) { // Only draw a card when animation is not running
       this.game.drawCardAnimation = true;
       this.game.currentCard = this.game.stack.pop(); // With pop() the last card from the stack is assigned to the variable currentCard
 
