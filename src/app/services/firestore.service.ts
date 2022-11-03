@@ -59,6 +59,7 @@ export class FirestoreService {
     this.game.stack = game.stack;
     this.game.currentCard = game.currentCard;
     this.game.drawCardAnimation = game.drawCardAnimation;
+    this.game.maxPlayerLimitReached = game.maxPlayerLimitReached;
 
     console.log('Local update: ', this.game);
   }

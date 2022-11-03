@@ -14,7 +14,6 @@ export class GameComponent implements OnInit {
   game: Game;
   gameID: string;
   mayPlayerLimit: number = 4;
-  maxPlayerLimitReached: boolean = false;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog, private firestoreService: FirestoreService) {
 
@@ -92,10 +91,13 @@ export class GameComponent implements OnInit {
     this.firestoreService.updateFirestore(this.gameID);
 
     if (this.game.players.length > this.mayPlayerLimit - 1) {
-      this.maxPlayerLimitReached = true;
+      this.game.maxPlayerLimitReached = true;
+      console.log(this.game.players.length)
     } else {
-      this.maxPlayerLimitReached = false;
+      this.game.maxPlayerLimitReached = false;
     }
+
+    this.firestoreService.updateFirestore(this.gameID);
   }
 
 }

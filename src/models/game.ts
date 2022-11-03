@@ -1,10 +1,11 @@
 export class Game {
-    public players: string[] = [];
-    public stack: string[] = [];
-    public playedCards: string[] = [];
-    public currentPlayer: number = 0;
-    public currentCard: string = '';
-    public drawCardAnimation = false;
+    players: string[] = [];
+    stack: string[] = [];
+    playedCards: string[] = [];
+    currentPlayer: number = 0;
+    currentCard: string = '';
+    drawCardAnimation: boolean = false;
+    maxPlayerLimitReached: boolean = false;
 
     constructor() {
         for (let i = 1; i < 14; i++) {
@@ -32,14 +33,15 @@ export class Game {
      * Formats the game object to a JSON
      * @returns JSON
      */
-    public toJSON() {
+    toJSON() {
         return {
             players: this.players,
             stack: this.stack,
             playedCards: this.playedCards,
             currentPlayer: this.currentPlayer,
             currentCard: this.currentCard,
-            drawCardAnimation: this.drawCardAnimation
+            drawCardAnimation: this.drawCardAnimation,
+            maxPlayerLimitReached: this.maxPlayerLimitReached
         }
     }
 
