@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { FirestoreService } from '../services/firestore.service';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -13,7 +14,7 @@ export class GameComponent implements OnInit {
   game: Game;
   gameID: string;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {
+  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog, private firestoreService: FirestoreService) {
 
   }
 
@@ -102,16 +103,6 @@ export class GameComponent implements OnInit {
   }
 
   // ############################################################################################### FIRESTORE (CRUD)
-
-  /**
-   * CRUD => CREATE
-   * Adds data to the Firestore
-   * @param collection The collection of the Firestore
-   * @param element The element in the collection
-   */
-  public addToFirestore(collection: string, element: object) {
-    this.firestore.collection(collection).add({ 'game': element });
-  }
 
   /**
    * CRUD => READ
