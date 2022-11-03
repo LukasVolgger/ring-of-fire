@@ -20,25 +20,28 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.newGame();
+    this.shareValues();
 
     this.route.params.subscribe((param) => {
       console.log('Game ID: ', param['gameID']);
       this.gameID = param['gameID'];
 
-      this.getDataFromFirestore(this.gameID);
+      this.firestoreService.getDataFromFirestore(this.gameID);
     });
   }
 
-  // ############################################################################################### GAME
-
   /**
    * Initializes a new game by creating an object instance of Game()
-   * Adds the game to the Firestore
    */
   newGame() {
     this.game = new Game();
-    // console.log('Game Object: ', this.game);
-    // console.log('Game JSON: ', this.game.toJSON());
+  }
+
+  /**
+   * Passes values to other classes/services
+   */
+  shareValues() {
+    this.firestoreService.game = this.game;
   }
 
   /**
@@ -54,13 +57,13 @@ export class GameComponent implements OnInit {
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; // e.g. 0%3 = 0; 1%3 = 1; 2%3 = 2; ...
       console.log('Current card: ', this.game.currentCard);
 
-      this.updateFirestore(); // Here must also be updated because otherwise the draw card animation is not synchronized 
+      this.firestoreService.updateFirestore(this.gameID); // Here must also be updated because otherwise the draw card animation is not synchronized 
 
       setTimeout(() => {
         this.game.playedCards.push(this.game.currentCard);
         this.game.drawCardAnimation = false;
 
-        this.updateFirestore();
+        this.firestoreService.updateFirestore(this.gameID);
       }, 1200) // Must be the same time as SCSS: draw-card-animation
     }
   }
@@ -84,52 +87,7 @@ export class GameComponent implements OnInit {
    */
   addPlayer(playerName) {
     this.game.players.push(playerName);
-    this.updateFirestore();
-  }
-
-  /**
- * Updates the local variables
- * @param game The game object from Firestore
- */
-  updateLocalData(game: any) {
-    this.game.currentPlayer = game.currentPlayer;
-    this.game.playedCards = game.playedCards;
-    this.game.players = game.players;
-    this.game.stack = game.stack;
-    this.game.currentCard = game.currentCard;
-    this.game.drawCardAnimation = game.drawCardAnimation;
-
-    console.log('Local update: ', this.game);
-  }
-
-  // ############################################################################################### FIRESTORE (CRUD)
-
-  /**
-   * CRUD => READ
-   * Fetches the data from the Firestore
-   */
-  public getDataFromFirestore(gameID) {
-    this.firestore
-      .collection('games')
-      .doc(gameID)
-      .valueChanges()
-      .subscribe((game) => {
-        console.log('Firestore update: ', game);
-        this.updateLocalData(game);
-      })
-  }
-
-  /**
-   * CRUD => UPDATE
-   * Updates the data in the Firestore
-   */
-  public updateFirestore() {
-    this.firestore
-      .collection('games')
-      .doc(this.gameID)
-      .update(this.game.toJSON());
-
-    // console.log(this.game.toJSON());
+    this.firestoreService.updateFirestore(this.gameID);
   }
 
 }
