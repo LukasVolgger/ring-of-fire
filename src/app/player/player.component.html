@@ -1,7 +1,4 @@
 <div class="player" [class.player-active]="playerActive">
-    <img src="./../../assets/img/players/standard_avatar.svg" alt="Player">
+    <img src="./../../assets/img/players/{{ playerImage }}" alt="Player">
     <span>{{ name }}</span>
-    <button mat-icon-button color="basic" (click)="openEditPlayerDialog()">
-        <mat-icon>edit</mat-icon>
-    </button>
 </div>

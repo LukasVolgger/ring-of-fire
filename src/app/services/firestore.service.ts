@@ -56,6 +56,7 @@ export class FirestoreService {
     this.game.currentPlayer = game.currentPlayer;
     this.game.playedCards = game.playedCards;
     this.game.players = game.players;
+    this.game.playerImages = game.playerImages;
     this.game.stack = game.stack;
     this.game.currentCard = game.currentCard;
     this.game.drawCardAnimation = game.drawCardAnimation;

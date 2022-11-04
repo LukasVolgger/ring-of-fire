@@ -1,12 +1,15 @@
 <h1 mat-dialog-title>Edit player</h1>
-<div mat-dialog-content>
-    <p>What's your favorite animal?</p>
-    <mat-form-field appearance="fill">
-        <mat-label>Favorite Animal</mat-label>
-        <input matInput>
-    </mat-form-field>
+<mat-form-field appearance="fill">
+    <mat-label>Change name</mat-label>
+    <input matInput [(ngModel)]="newPlayerName">
+</mat-form-field>
+<h2>Change avatar</h2>
+<div class="content" mat-dialog-content>
+    <div class="avatar-images">
+        <img class="avatar-img" [mat-dialog-close]="img" *ngFor="let img of allGameAvatars; let i = index;" src="./../../assets/img/players/{{allGameAvatars[i]}}" alt="Game avatar">
+    </div>
 </div>
 <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+    <button mat-button [mat-dialog-close]="'DELETE'" color="warn">Delete player</button>
+    <button mat-button [mat-dialog-close]="newPlayerName" cdkFocusInitial>Ok</button>
 </div>

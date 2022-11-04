@@ -7,6 +7,10 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(1.25);
+    }
     img {
         width: 40px;
         object-fit: contain;

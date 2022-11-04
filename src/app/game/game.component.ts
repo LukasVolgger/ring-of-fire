@@ -5,6 +5,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
+import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-player.component';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -83,11 +84,60 @@ export class GameComponent implements OnInit {
   }
 
   /**
+   * Opens the dialog-edit-player component as dialog
+   * @param playerID The index of the current player
+   */
+  openEditPlayerDialog(playerID: number): void {
+    const dialogRef = this.dialog.open(DialogEditPlayerComponent);
+
+    dialogRef.afterClosed().subscribe(change => {
+
+      if (change) {
+        switch (change) {
+          case 'DELETE':
+            this.game.players.splice(playerID, 1)
+            this.game.playerImages.splice(playerID, 1)
+            break;
+
+          case 'bee.svg':
+            this.game.playerImages[playerID] = change;
+            break;
+
+          case 'penguin.svg':
+            this.game.playerImages[playerID] = change;
+            break;
+
+          case 'standard_avatar.svg':
+            this.game.playerImages[playerID] = change;
+            break;
+
+          case 'woman_blue.svg':
+            this.game.playerImages[playerID] = change;
+            break;
+
+          case 'woman_pink.svg':
+            this.game.playerImages[playerID] = change;
+            break;
+
+          default:
+            this.game.players[playerID] = change;
+            break;
+        }
+      }
+
+      console.log('Edit player: ', playerID, 'Received change: ', change);
+      this.firestoreService.updateFirestore(this.gameID);
+
+    });
+  }
+
+  /**
    * Adds a new player to the current game instance
    * @param playerName The name of the player
    */
   addPlayer(playerName) {
     this.game.players.push(playerName);
+    this.game.playerImages.push('standard_avatar.svg');
     this.firestoreService.updateFirestore(this.gameID);
 
     if (this.game.players.length > this.mayPlayerLimit - 1) {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-edit-player',
@@ -6,17 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-edit-player.component.scss']
 })
 export class DialogEditPlayerComponent implements OnInit {
+  allGameAvatars = ['bee.svg', 'penguin.svg', 'standard_avatar.svg', 'woman_blue.svg', 'woman_pink.svg'];
+  newPlayerName: string = '';
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<DialogEditPlayerComponent>) { }
 
   ngOnInit(): void {
-  }
-
-  /**
-   * When user clicks "No"
-   */
-  onNoClick() {
-    // ....
   }
 
 }
