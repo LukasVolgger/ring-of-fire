@@ -1,11 +1,28 @@
 .content {
+    flex-direction: column;
+    gap: 64px;
+    background-color: black;
+    min-height: 100vh;
+    h1 {
+        color: white;
+        font-size: 128px;
+        font-family: UnifrakturMaguntia;
+        text-align: center;
+        line-height: 128px;
+    }
     button {
-        position: absolute;
         background-color: rgba(0, 0, 0, 0.35);
         color: white;
-        font-size: 64px;
+        font-size: 48px;
         border: 1px solid white;
         border-radius: 8px;
         cursor: pointer;
+        &:hover {
+            background-color: rgba(92, 92, 92, 0.35);
+        }
     }
+}
+
+.start-screen-img {
+    width: 500px;
 }
