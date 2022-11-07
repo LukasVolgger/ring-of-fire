@@ -106,6 +106,7 @@ export class GameComponent implements OnInit {
    */
   openEditPlayerDialog(playerID: number): void {
     const dialogRef = this.dialog.open(DialogEditPlayerComponent);
+    dialogRef.componentInstance.newPlayerName = this.game.players[playerID];
 
     dialogRef.afterClosed().subscribe(change => {
 
