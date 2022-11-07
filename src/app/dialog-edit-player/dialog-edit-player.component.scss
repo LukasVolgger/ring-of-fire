@@ -1,5 +1,7 @@
 .avatar-images {
     display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 16px;
 }
 
@@ -10,5 +12,12 @@
     cursor: pointer;
     &:hover {
         filter: brightness(1.25);
+    }
+}
+
+@media (max-width: 360px) {
+    .avatar-img {
+        width: 60px;
+        height: 60px;
     }
 }

@@ -3,7 +3,7 @@
         <app-player (click)="openEditPlayerDialog(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 0 + (i * 200)}" [name]="player" [playerActive]="i == game.currentPlayer" [playerImage]="game.playerImages[i]"></app-player>
     </div>
     <div class="content centered fullscreen" style="background-image: url('./../../assets/img/background/{{ game.backgroundImage }}');">
-        <div class="card-stack centered">
+        <div class="card-stack">
             <!-- Card stack -->
             <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
             <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" (click)="drawCard()" class="card top-card">

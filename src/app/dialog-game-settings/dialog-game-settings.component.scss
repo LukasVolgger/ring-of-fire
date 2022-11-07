@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
 }
 
@@ -12,5 +13,12 @@
     cursor: pointer;
     &:hover {
         filter: brightness(1.5);
+    }
+}
+
+@media (max-width: 360px) {
+    .bg-preview-img {
+        width: 60px;
+        height: 60px;
     }
 }

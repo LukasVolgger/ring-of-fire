@@ -4,3 +4,10 @@
     bottom: 32px;
     left: 100px;
 }
+
+@media (max-width: 360px) {
+    .game-info-card {
+        right: 16px;
+        left: 16px;
+    }
+}

@@ -4,6 +4,9 @@
 }
 
 .card-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     img {
         position: absolute;
@@ -93,4 +96,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 360px) {
+    .card-stack {
+        position: absolute;
+        bottom: 310px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .draw-card {
+        transform: scale(1) translateX(100px) translateY(-200px) rotate(12deg);
+    }
+    .played-card {
+        transform: scale(1) translateX(100px) translateY(-200px) rotate(12deg);
+    }
+    @keyframes draw-card-animation {
+        0% {
+            transform: scale(1);
+        }
+        40% {
+            transform: scale(1.5);
+        }
+        60% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1) translateX(100px) translateY(-200px) rotate(12deg);
+        }
+    }
+    .game-menu {
+        right: -8px;
+    }
 }
