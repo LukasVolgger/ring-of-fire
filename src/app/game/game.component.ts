@@ -14,7 +14,7 @@ import { DialogGameSettingsComponent } from '../dialog-game-settings/dialog-game
 export class GameComponent implements OnInit {
   game: Game;
   gameID: string;
-  mayPlayerLimit: number = 4;
+  maxPlayerLimit: number = 4;
   gameOver: boolean = false;
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, private firestoreService: FirestoreService, private router: Router) {
@@ -157,7 +157,7 @@ export class GameComponent implements OnInit {
     this.game.playerImages.push('standard_avatar.svg');
     this.firestoreService.updateFirestore(this.gameID);
 
-    if (this.game.players.length > this.mayPlayerLimit - 1) {
+    if (this.game.players.length > this.maxPlayerLimit - 1) {
       this.game.maxPlayerLimitReached = true;
       console.log(this.game.players.length)
     } else {

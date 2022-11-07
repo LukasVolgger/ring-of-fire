@@ -18,7 +18,7 @@
 
     <app-game-info [card]="game.currentCard"></app-game-info>
 
-    <button mat-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="!game.maxPlayerLimitReached" matTooltip="Add a new player">
+    <button mat-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player">
         <mat-icon>add</mat-icon>
     </button>
     <button (click)="openGameSettingsDialog()" mat-mini-fab color="basic" class="settings-btn" matTooltip="Game settings">
