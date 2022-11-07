@@ -11,5 +11,4 @@ export class AppComponent {
 
 // ########################################################################################### DEVELOPMENT PAUSED
 // TODO Implement game settings screen => Change bg (SVG's already exist), change lang....
-// TODO Implement 'Share Game'-Button to share the gameID via email and play with others
 // TODO Responsive design

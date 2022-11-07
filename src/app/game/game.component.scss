@@ -61,6 +61,25 @@
     bottom: 32px;
 }
 
+.share-game-container {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    span {
+        background-color: white;
+        border-radius: 4px;
+        padding: 4px 8px 4px 8px;
+    }
+}
+
+.menu-title {
+    font-weight: bold;
+    pointer-events: none
+}
+
 .game-over-screen {
     position: absolute;
     top: 0;

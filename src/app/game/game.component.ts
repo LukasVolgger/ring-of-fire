@@ -154,6 +154,26 @@ export class GameComponent implements OnInit {
   }
 
   /**
+   * Opens the standard mail program on the PC
+   */
+  shareGameByEmail() {
+    // TODO Add URL
+    window.open(`mailto:?subject=Hey, I want to play Ring of Fire with you!&body=Join the game: https://${this.gameID}>`);
+  }
+
+  /**
+   * Copies the game link to the clipboard
+   */
+  copyLinkToClipboard() {
+    // TODO Add URL
+    let copyText = `Hey, I want to play Ring of Fire with you! https://${this.gameID}`;
+
+    navigator.clipboard.writeText(copyText);
+
+    alert('Link copied to clipboard!');
+  }
+
+  /**
    * Checks if the last card has already been drawn
    * Shows game over screen if true
    */
