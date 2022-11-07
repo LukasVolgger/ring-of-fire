@@ -159,7 +159,6 @@ export class GameComponent implements OnInit {
 
     if (this.game.players.length > this.maxPlayerLimit - 1) {
       this.game.maxPlayerLimitReached = true;
-      console.log(this.game.players.length)
     } else {
       this.game.maxPlayerLimitReached = false;
     }
