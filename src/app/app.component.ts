@@ -10,5 +10,4 @@ export class AppComponent {
 }
 
 // ########################################################################################### DEVELOPMENT PAUSED
-// TODO Implement game settings screen => Change bg (SVG's already exist), change lang....
 // TODO Responsive design
