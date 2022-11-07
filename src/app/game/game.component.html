@@ -2,7 +2,7 @@
     <div class="player-container">
         <app-player (click)="openEditPlayerDialog(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 0 + (i * 200)}" [name]="player" [playerActive]="i == game.currentPlayer" [playerImage]="game.playerImages[i]"></app-player>
     </div>
-    <div class="content centered fullscreen">
+    <div class="content centered fullscreen" style="background-image: url('./../../assets/img/background/{{ game.backgroundImage }}');">
         <div class="card-stack centered">
             <!-- Card stack -->
             <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
@@ -21,10 +21,13 @@
     <button mat-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="!game.maxPlayerLimitReached" matTooltip="Add a new player">
         <mat-icon>add</mat-icon>
     </button>
-    <div class="share-game-container">
-        <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" aria-label="Example icon button with a delete icon" class="share-game-btn" matTooltip="Invite your friends!">
-        <mat-icon>share</mat-icon>
+    <button (click)="openGameSettingsDialog()" mat-mini-fab color="basic" class="settings-btn" matTooltip="Game settings">
+        <mat-icon>settings</mat-icon>
     </button>
+    <div class="share-game-container">
+        <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" class="share-game-btn" matTooltip="Invite your friends!">
+            <mat-icon>share</mat-icon>
+        </button>
         <mat-menu #menu="matMenu">
             <span mat-menu-item class="menu-title">Play with friends</span>
             <mat-divider></mat-divider>

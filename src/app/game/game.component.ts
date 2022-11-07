@@ -5,6 +5,7 @@ import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
 import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-player.component';
+import { DialogGameSettingsComponent } from '../dialog-game-settings/dialog-game-settings.component';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -52,7 +53,6 @@ export class GameComponent implements OnInit {
    */
   drawCard() {
     this.checkGameOver();
-    console.log('Game over: ', this.game.gameOver);
 
     if (!this.game.drawCardAnimation && this.game.players.length > 0 && !this.game.gameOver) { // Only draw a card when animation is not running
       this.game.drawCardAnimation = true;
@@ -60,7 +60,6 @@ export class GameComponent implements OnInit {
 
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length; // e.g. 0%3 = 0; 1%3 = 1; 2%3 = 2; ...
-      console.log('Current card: ', this.game.currentCard);
 
       this.firestoreService.updateFirestore(this.gameID); // Here must also be updated because otherwise the draw card animation is not synchronized 
 
@@ -82,6 +81,21 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe(playerName => { // Gets the name of the input from dialog-add-player
       if (playerName && playerName.length > 0) {
         this.addPlayer(playerName);
+      }
+    });
+  }
+
+  /**
+   * Opens the dialog component DialogAddPlayerComponent
+   */
+  openGameSettingsDialog() {
+    const dialogRef = this.dialog.open(DialogGameSettingsComponent, {});
+
+    dialogRef.afterClosed().subscribe(change => { // Gets the name of the input from dialog-add-player
+      if (change) {
+        console.log(change);
+        this.game.backgroundImage = change;
+        this.firestoreService.updateFirestore(this.gameID);
       }
     });
   }

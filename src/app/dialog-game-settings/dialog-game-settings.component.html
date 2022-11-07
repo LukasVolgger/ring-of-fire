@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Change background</h1>
+<div mat-dialog-content>
+    <div class="bg-img-container">
+        <img [mat-dialog-close]="gameBackgrounds[i]" class="bg-preview-img" src="./../../assets/img/background/{{gameBackgrounds[i]}}" alt="Background image" *ngFor="let image of gameBackgrounds; let i = index;">
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="dialogRef.close()">Cancel</button>
+</div>

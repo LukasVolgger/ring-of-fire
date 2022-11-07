@@ -1,0 +1,16 @@
+.bg-img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.bg-preview-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    &:hover {
+        filter: brightness(1.5);
+    }
+}

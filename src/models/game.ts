@@ -8,6 +8,7 @@ export class Game {
     drawCardAnimation: boolean = false;
     maxPlayerLimitReached: boolean = false;
     gameOver: boolean = false;
+    backgroundImage: string = 'wood_bg.svg';
 
     constructor() {
         for (let i = 1; i < 14; i++) {
@@ -45,7 +46,8 @@ export class Game {
             currentCard: this.currentCard,
             drawCardAnimation: this.drawCardAnimation,
             maxPlayerLimitReached: this.maxPlayerLimitReached,
-            gameOver: this.gameOver
+            gameOver: this.gameOver,
+            backgroundImage: this.backgroundImage
         }
     }
 }

@@ -27,6 +27,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { DialogEditPlayerComponent } from './dialog-edit-player/dialog-edit-player.component';
+import { DialogGameSettingsComponent } from './dialog-game-settings/dialog-game-settings.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DialogEditPlayerComponent } from './dialog-edit-player/dialog-edit-play
     PlayerComponent,
     DialogAddPlayerComponent,
     GameInfoComponent,
-    DialogEditPlayerComponent
+    DialogEditPlayerComponent,
+    DialogGameSettingsComponent
   ],
   imports: [
     BrowserModule,
