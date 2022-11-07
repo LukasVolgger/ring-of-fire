@@ -60,32 +60,14 @@
     gap: 4px;
 }
 
-.add-player-btn {
+.game-menu {
     position: absolute;
-    right: 32px;
-    bottom: 32px;
-}
-
-.share-game-container {
-    position: absolute;
-    top: 16px;
-    right: 64px;
-    display: flex;
-    gap: 8px;
-    span {
-        background-color: white;
-        border-radius: 4px;
-        padding: 4px 8px 4px 8px;
-    }
-}
-
-.settings-btn {
-    position: absolute;
-    top: 16px;
+    top: 50%;
     right: 16px;
+    transform: translate(-50%, -50%);
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .menu-title {

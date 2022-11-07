@@ -18,23 +18,26 @@
 
     <app-game-info [card]="game.currentCard"></app-game-info>
 
-    <button mat-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player">
-        <mat-icon>add</mat-icon>
-    </button>
-    <button (click)="openGameSettingsDialog()" mat-mini-fab color="basic" class="settings-btn" matTooltip="Game settings">
-        <mat-icon>settings</mat-icon>
-    </button>
-    <div class="share-game-container">
-        <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" class="share-game-btn" matTooltip="Invite your friends!">
-            <mat-icon>share</mat-icon>
+    <div class="game-menu">
+        <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player">
+            <mat-icon>add</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-            <span mat-menu-item class="menu-title">Play with friends</span>
-            <mat-divider></mat-divider>
-            <button mat-menu-item (click)="shareGameByEmail()">Send link by email</button>
-            <button mat-menu-item (click)="copyLinkToClipboard()">Copy link to clipboard</button>
-        </mat-menu>
+        <button (click)="openGameSettingsDialog()" mat-mini-fab color="primary" class="settings-btn" matTooltip="Game settings">
+            <mat-icon>settings</mat-icon>
+        </button>
+        <div class="share-game-container">
+            <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" class="share-game-btn" matTooltip="Invite your friends!">
+                <mat-icon>share</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <span mat-menu-item class="menu-title">Play with friends</span>
+                <mat-divider></mat-divider>
+                <button mat-menu-item (click)="shareGameByEmail()">Send link by email</button>
+                <button mat-menu-item (click)="copyLinkToClipboard()">Copy link to clipboard</button>
+            </mat-menu>
+        </div>
     </div>
+
 </div>
 <div *ngIf="game.gameOver" class="game-over-screen">
     <h2>Game Over</h2>
