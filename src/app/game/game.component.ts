@@ -169,6 +169,7 @@ export class GameComponent implements OnInit {
    */
   startNewGame() {
     this.router.navigateByUrl('');
+    this.firestoreService.deleteFromFirestore(this.gameID);
   }
 
 }

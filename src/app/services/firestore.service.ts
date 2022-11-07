@@ -49,6 +49,15 @@ export class FirestoreService {
   }
 
   /**
+   * CRUD => DELETE
+   * Deletes the passed document
+   * @param gameID The document id from firestore
+   */
+  deleteFromFirestore(gameID) {
+    this.firestore.collection('games').doc(gameID).delete();
+  }
+
+  /**
    * Updates the local variables
    * @param game The game object from Firestore
    */
