@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-player',
@@ -11,7 +12,7 @@ export class PlayerComponent implements OnInit {
   @Input() playerImage = 'standard_avatar.svg';
   @Input() playerActive: boolean = false;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, public firestoreService: FirestoreService) { }
 
   ngOnInit(): void {
   }

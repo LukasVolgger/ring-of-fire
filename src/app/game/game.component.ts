@@ -142,7 +142,7 @@ export class GameComponent implements OnInit {
         }
       }
 
-      console.log('Edit player: ', playerID, 'Received change: ', change);
+      // console.log('Edit player: ', playerID, 'Received change: ', change);
       this.firestoreService.updateFirestore(this.gameID);
 
     });
