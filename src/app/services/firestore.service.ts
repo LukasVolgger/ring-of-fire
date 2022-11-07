@@ -31,7 +31,7 @@ export class FirestoreService {
       .doc(gameID)
       .valueChanges()
       .subscribe((game) => {
-        console.log('Firestore update: ', game);
+        // console.log('Firestore update: ', game);
         this.updateLocalData(game);
       })
   }
@@ -61,8 +61,9 @@ export class FirestoreService {
     this.game.currentCard = game.currentCard;
     this.game.drawCardAnimation = game.drawCardAnimation;
     this.game.maxPlayerLimitReached = game.maxPlayerLimitReached;
+    this.game.gameOver = game.gameOver;
 
-    console.log('Local update: ', this.game);
+    // console.log('Local update: ', this.game);
   }
 
 }

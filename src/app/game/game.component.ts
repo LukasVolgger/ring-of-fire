@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
 import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-player.component';
 @Component({
@@ -15,8 +14,9 @@ export class GameComponent implements OnInit {
   game: Game;
   gameID: string;
   mayPlayerLimit: number = 4;
+  gameOver: boolean = false;
 
-  constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog, private firestoreService: FirestoreService) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, private firestoreService: FirestoreService, private router: Router) {
 
   }
 
@@ -51,7 +51,10 @@ export class GameComponent implements OnInit {
    * Increments the index this.game.currentPlayer++; so that on the next draw it is the next player's turn
    */
   drawCard() {
-    if (!this.game.drawCardAnimation && this.game.players.length > 0) { // Only draw a card when animation is not running
+    this.checkGameOver();
+    console.log('Game over: ', this.game.gameOver);
+
+    if (!this.game.drawCardAnimation && this.game.players.length > 0 && !this.game.gameOver) { // Only draw a card when animation is not running
       this.game.drawCardAnimation = true;
       this.game.currentCard = this.game.stack.pop(); // With pop() the last card from the stack is assigned to the variable currentCard
 
@@ -148,6 +151,24 @@ export class GameComponent implements OnInit {
     }
 
     this.firestoreService.updateFirestore(this.gameID);
+  }
+
+  /**
+   * Checks if the last card has already been drawn
+   * Shows game over screen if true
+   */
+  checkGameOver() {
+    if (this.game.stack.length < 1) {
+      this.game.gameOver = true;
+      this.firestoreService.updateFirestore(this.gameID);
+    }
+  }
+
+  /**
+   * Redirects to start screen
+   */
+  startNewGame() {
+    this.router.navigateByUrl('');
   }
 
 }

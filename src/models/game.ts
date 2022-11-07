@@ -7,6 +7,7 @@ export class Game {
     currentCard: string = '';
     drawCardAnimation: boolean = false;
     maxPlayerLimitReached: boolean = false;
+    gameOver: boolean = false;
 
     constructor() {
         for (let i = 1; i < 14; i++) {
@@ -43,10 +44,10 @@ export class Game {
             currentPlayer: this.currentPlayer,
             currentCard: this.currentCard,
             drawCardAnimation: this.drawCardAnimation,
-            maxPlayerLimitReached: this.maxPlayerLimitReached
+            maxPlayerLimitReached: this.maxPlayerLimitReached,
+            gameOver: this.gameOver
         }
     }
-
 }
 
 

@@ -1,20 +1,26 @@
-<app-player (click)="openEditPlayerDialog(i)" class="player-position" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 90)}" [name]="player" [playerActive]="i == game.currentPlayer" [playerImage]="game.playerImages[i]"></app-player>
-<div class="content centered fullscreen">
-    <div class="card-stack centered">
-        <!-- Card stack -->
-        <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
-        <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" (click)="drawCard()" class="card top-card">
+<div *ngIf="!game.gameOver">
+    <app-player (click)="openEditPlayerDialog(i)" class="player-position" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 90)}" [name]="player" [playerActive]="i == game.currentPlayer" [playerImage]="game.playerImages[i]"></app-player>
+    <div class="content centered fullscreen">
+        <div class="card-stack centered">
+            <!-- Card stack -->
+            <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
+            <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" (click)="drawCard()" class="card top-card">
 
-        <!-- Played cards -->
-        <img src="./../../assets/img/cards/{{ playedCard }}.svg" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
+            <!-- Played cards -->
+            <img src="./../../assets/img/cards/{{ playedCard }}.svg" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
 
-        <!-- Current card (Animation) -->
-        <img src="./../../assets/img/cards/{{ game.currentCard }}.svg" alt="" *ngIf="game.drawCardAnimation" class="card draw-card">
+            <!-- Current card (Animation) -->
+            <img src="./../../assets/img/cards/{{ game.currentCard }}.svg" alt="" *ngIf="game.drawCardAnimation" class="card draw-card">
+        </div>
     </div>
-</div>
 
-<app-game-info [card]="game.currentCard"></app-game-info>
+    <app-game-info [card]="game.currentCard"></app-game-info>
 
-<button mat-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="!game.maxPlayerLimitReached">
+    <button mat-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="!game.maxPlayerLimitReached">
     <mat-icon>add</mat-icon>
 </button>
+</div>
+<div *ngIf="game.gameOver" class="game-over-screen">
+    <h2>Game Over</h2>
+    <button (click)="startNewGame()" mat-raised-button color="primary">Restart</button>
+</div>
