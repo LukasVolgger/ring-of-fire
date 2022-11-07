@@ -1,5 +1,7 @@
 <div *ngIf="!game.gameOver">
-    <app-player (click)="openEditPlayerDialog(i)" class="player-position" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'top.px': 100 + (i * 90)}" [name]="player" [playerActive]="i == game.currentPlayer" [playerImage]="game.playerImages[i]"></app-player>
+    <div class="player-container">
+        <app-player (click)="openEditPlayerDialog(i)" *ngFor="let player of game.players; let i = index;" [ngStyle]="{'left.px': 0 + (i * 200)}" [name]="player" [playerActive]="i == game.currentPlayer" [playerImage]="game.playerImages[i]"></app-player>
+    </div>
     <div class="content centered fullscreen">
         <div class="card-stack centered">
             <!-- Card stack -->
@@ -24,7 +26,7 @@
         <mat-icon>share</mat-icon>
     </button>
         <mat-menu #menu="matMenu">
-            <span mat-menu-item class="menu-title">Play with your friends</span>
+            <span mat-menu-item class="menu-title">Play with friends</span>
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="shareGameByEmail()">Send link by email</button>
             <button mat-menu-item (click)="copyLinkToClipboard()">Copy link to clipboard</button>

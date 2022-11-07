@@ -1,18 +1,17 @@
 .player {
-    width: 300px;
-    background-color: rgba(115, 115, 115, 0.8);
-    border-top-left-radius: 64px;
-    border-bottom-left-radius: 64px;
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 16px;
     display: flex;
     align-items: center;
     gap: 16px;
+    width: 180px;
+    border: 2px solid silver;
     cursor: pointer;
     &:hover {
-        filter: brightness(1.25);
+        background-color: rgba(218, 216, 216, 0.8);
     }
     img {
-        width: 40px;
+        width: 60px;
         object-fit: contain;
         border-radius: 50%;
     }
@@ -24,4 +23,5 @@
 
 .player-active {
     background-color: rgba(240, 219, 62, 0.8);
+    border: 2px solid rgb(43, 43, 43);
 }

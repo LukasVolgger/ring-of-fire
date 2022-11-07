@@ -49,10 +49,15 @@
     }
 }
 
-.player-position {
+.player-container {
     position: absolute;
+    top: 16px;
     right: 0;
-    z-index: 1;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-player-btn {
