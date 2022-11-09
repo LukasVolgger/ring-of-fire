@@ -23,6 +23,10 @@
         <span class="player-counter">{{ game.players.length }} / {{ maxPlayerLimit}}</span>
         <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player" matTooltipPosition="left">
             <mat-icon>add</mat-icon>
+            <div *ngIf="game.players.length < 1">
+                <div class="arrow arrow-first"></div>
+                <div class="arrow arrow-second"></div>
+            </div>
         </button>
         <button (click)="openGameSettingsDialog()" mat-mini-fab color="primary" class="settings-btn" matTooltip="Game settings" matTooltipPosition="left">
             <mat-icon>settings</mat-icon>
