@@ -22,15 +22,15 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.newGame();
-    this.shareValues();
-
     this.route.params.subscribe((param) => {
       console.log('Game ID: ', param['gameID']);
       this.gameID = param['gameID'];
 
       this.firestoreService.getDataFromFirestore(this.gameID);
     });
+
+    this.newGame();
+    this.shareValues();
   }
 
   /**
@@ -45,6 +45,9 @@ export class GameComponent implements OnInit {
    */
   shareValues() {
     this.firestoreService.game = this.game;
+    this.firestoreService.game.documentID = this.gameID;
+
+    this.firestoreService.updateFirestore(this.gameID);
   }
 
   /**

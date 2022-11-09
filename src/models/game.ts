@@ -9,6 +9,8 @@ export class Game {
     maxPlayerLimitReached: boolean = false;
     gameOver: boolean = false;
     backgroundImage: string = 'wood_bg.svg';
+    documentID: string = '';
+    timestamp: number = Date.now();
 
     constructor() {
         for (let i = 1; i < 14; i++) {
@@ -47,7 +49,9 @@ export class Game {
             drawCardAnimation: this.drawCardAnimation,
             maxPlayerLimitReached: this.maxPlayerLimitReached,
             gameOver: this.gameOver,
-            backgroundImage: this.backgroundImage
+            backgroundImage: this.backgroundImage,
+            documentID: this.documentID,
+            timestamp: this.timestamp
         }
     }
 }

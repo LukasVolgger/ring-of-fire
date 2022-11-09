@@ -72,6 +72,8 @@ export class FirestoreService {
     this.game.maxPlayerLimitReached = game.maxPlayerLimitReached;
     this.game.gameOver = game.gameOver;
     this.game.backgroundImage = game.backgroundImage;
+    this.game.documentID = game.documentID;
+    this.game.timestamp = game.timestamp;
 
     // console.log('Local update: ', this.game);
   }
