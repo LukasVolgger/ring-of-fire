@@ -173,7 +173,6 @@
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
     .card-stack {
-        position: absolute;
         bottom: 30%;
         img {
             width: 120px;
@@ -197,6 +196,65 @@
         }
         100% {
             transform: scale(1) translateX(100px) translateY(-240px) rotate(12deg);
+        }
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .card-stack {
+        bottom: 35%;
+        img {
+            width: 140px;
+        }
+    }
+    .draw-card {
+        transform: scale(1) translateX(100px) translateY(-260px) rotate(12deg);
+    }
+    .played-card {
+        transform: scale(1) translateX(100px) translateY(-260px) rotate(12deg);
+    }
+    @keyframes draw-card-animation {
+        0% {
+            transform: scale(1);
+        }
+        40% {
+            transform: scale(1.5);
+        }
+        60% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1) translateX(100px) translateY(-260px) rotate(12deg);
+        }
+    }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+    .card-stack {
+        img {
+            width: 160px;
+        }
+    }
+    .draw-card {
+        transform: scale(1) translateX(100px) translateY(-320px) rotate(12deg);
+    }
+    .played-card {
+        transform: scale(1) translateX(100px) translateY(-320px) rotate(12deg);
+    }
+    @keyframes draw-card-animation {
+        0% {
+            transform: scale(1);
+        }
+        40% {
+            transform: scale(1.5);
+        }
+        60% {
+            transform: scale(1.5);
+        }
+        100% {
+            transform: scale(1) translateX(100px) translateY(-320px) rotate(12deg);
         }
     }
 }

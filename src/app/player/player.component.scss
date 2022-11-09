@@ -13,6 +13,7 @@
     span {
         font-size: 24px;
         font-weight: 600;
+        word-break: break-word;
     }
 }
 
@@ -62,10 +63,29 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+    .player {
+        width: 120px;
+        span {
+            font-size: 20px;
+        }
+    }
     .player-img {
         position: initial;
-        top: 8px;
-        right: 8px;
+        width: 60px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .player {
+        flex-direction: row;
+        width: 180px;
+        gap: 16px;
+        span {
+            font-size: 20px;
+        }
+    }
+    .player-img {
         width: 60px;
     }
 }

@@ -29,3 +29,19 @@
         height: 60px;
     }
 }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .bg-preview-img {
+        width: 76px;
+        height: 76px;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .bg-preview-img {
+        width: 92px;
+        height: 92px;
+    }
+}

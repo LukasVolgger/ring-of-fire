@@ -28,3 +28,19 @@
         height: 60px;
     }
 }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    .avatar-img {
+        width: 76px;
+        height: 76px;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .avatar-img {
+        width: 92px;
+        height: 92px;
+    }
+}
