@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
@@ -17,8 +18,17 @@ export class GameComponent implements OnInit {
   maxPlayerLimit: number = 4;
   gameOver: boolean = false;
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog, private firestoreService: FirestoreService, private router: Router) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, private firestoreService: FirestoreService, private router: Router, private _snackBar: MatSnackBar) {
 
+  }
+
+  /**
+   * Opens the snackbar when link copied to clipboard
+   * @param message The message of the snackbar
+   * @param action ok, dismiss, etc...
+   */
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
   }
 
   ngOnInit(): void {
@@ -187,7 +197,7 @@ export class GameComponent implements OnInit {
 
     navigator.clipboard.writeText(copyText);
 
-    alert('Link copied to clipboard!');
+    this.openSnackBar('Link copied to clipboard!', 'Ok');
   }
 
   /**

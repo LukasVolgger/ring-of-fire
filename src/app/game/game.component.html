@@ -21,14 +21,14 @@
     <div class="game-menu">
         <span class="player-counter">Players</span>
         <span class="player-counter">{{ game.players.length }} / {{ maxPlayerLimit}}</span>
-        <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player">
+        <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player" matTooltipPosition="left">
             <mat-icon>add</mat-icon>
         </button>
-        <button (click)="openGameSettingsDialog()" mat-mini-fab color="primary" class="settings-btn" matTooltip="Game settings">
+        <button (click)="openGameSettingsDialog()" mat-mini-fab color="primary" class="settings-btn" matTooltip="Game settings" matTooltipPosition="left">
             <mat-icon>settings</mat-icon>
         </button>
         <div class="share-game-container">
-            <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" class="share-game-btn" matTooltip="Invite your friends!">
+            <button [matMenuTriggerFor]="menu" mat-mini-fab color="primary" class="share-game-btn" matTooltip="Invite your friends!" matTooltipPosition="left">
                 <mat-icon>share</mat-icon>
             </button>
             <mat-menu #menu="matMenu">
@@ -39,6 +39,16 @@
             </mat-menu>
         </div>
     </div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Message</mat-label>
+        <input matInput value="Disco party!" #message>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Action</mat-label>
+        <input matInput value="Dance" #action>
+    </mat-form-field>
 
 </div>
 <div *ngIf="game.gameOver" class="game-over-screen">
