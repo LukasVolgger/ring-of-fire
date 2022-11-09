@@ -1,5 +1,5 @@
 <div class="player" [class.player-active]="playerActive">
     <span class="player-nr">{{ firestoreService.game.players.indexOf(name) + 1 }}</span>
-    <img src="./../../assets/img/players/{{ playerImage }}" alt="Player">
+    <img class="player-img" src="./../../assets/img/players/{{ playerImage }}" alt="Player">
     <span>{{ name }}</span>
 </div>

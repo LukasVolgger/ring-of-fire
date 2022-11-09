@@ -1,4 +1,5 @@
 .player {
+    position: relative;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 16px;
     display: flex;
@@ -9,15 +10,16 @@
     &:hover {
         background-color: rgba(218, 216, 216, 0.8);
     }
-    img {
-        width: 60px;
-        object-fit: contain;
-        border-radius: 50%;
-    }
     span {
         font-size: 24px;
         font-weight: 600;
     }
+}
+
+.player-img {
+    width: 60px;
+    object-fit: contain;
+    border-radius: 50%;
 }
 
 .player-active {
@@ -32,5 +34,38 @@
         span {
             font-size: 16px;
         }
+    }
+    .player-img {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 36px;
+    }
+}
+
+@media (min-width: 360px) {
+    .player {
+        width: 120px;
+        flex-direction: column;
+        gap: 8px;
+        span {
+            font-size: 16px;
+        }
+    }
+    .player-img {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 44px;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    .player-img {
+        position: initial;
+        top: 8px;
+        right: 8px;
+        width: 60px;
     }
 }
