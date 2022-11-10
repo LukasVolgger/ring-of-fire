@@ -4,6 +4,10 @@
     </div>
     <div class="content centered fullscreen" style="background-image: url('./../../assets/img/background/{{ game.backgroundImage }}');">
         <div class="card-stack">
+            <div *ngIf="game.players.length > 0 && game.playedCards.length < 1">
+                <div class="arrow arrow-first pos-card-stack-first"></div>
+                <div class="arrow arrow-second pos-card-stack-second"></div>
+            </div>
             <!-- Card stack -->
             <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
             <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" (click)="drawCard()" class="card top-card">
@@ -24,8 +28,8 @@
         <button mat-mini-fab color="primary" class="add-player-btn" (click)="openDialog()" *ngIf="game.players.length < maxPlayerLimit" matTooltip="Add a new player" matTooltipPosition="left">
             <mat-icon>add</mat-icon>
             <div *ngIf="game.players.length < 1">
-                <div class="arrow arrow-first"></div>
-                <div class="arrow arrow-second"></div>
+                <div class="arrow arrow-first pos-player-btn-first"></div>
+                <div class="arrow arrow-second pos-player-btn-second"></div>
             </div>
         </button>
         <button (click)="openGameSettingsDialog()" mat-mini-fab color="primary" class="settings-btn" matTooltip="Game settings" matTooltipPosition="left">

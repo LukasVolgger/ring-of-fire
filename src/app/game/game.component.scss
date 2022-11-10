@@ -14,18 +14,10 @@
 
 .arrow-first {
     animation: arrow-movement 1250ms ease-in-out infinite;
-    position: absolute;
-    top: 36px;
-    left: -48px;
-    transform: rotate(270deg);
 }
 
 .arrow-second {
     animation: arrow-movement 1250ms 500ms ease-in-out infinite;
-    position: absolute;
-    top: 36px;
-    left: -32px;
-    transform: rotate(270deg);
 }
 
 .arrow:before,
@@ -66,6 +58,30 @@
 
 .add-player-btn {
     position: relative;
+}
+
+.pos-player-btn-first {
+    top: 36px;
+    left: -48px;
+    transform: rotate(270deg);
+}
+
+.pos-player-btn-second {
+    top: 36px;
+    left: -32px;
+    transform: rotate(270deg);
+}
+
+.pos-card-stack-first {
+    top: -96px;
+    left: -72px;
+    transform: rotate(360deg);
+}
+
+.pos-card-stack-second {
+    top: -112px;
+    left: -72px;
+    transform: rotate(360deg);
 }
 
 .card-stack {
@@ -238,6 +254,14 @@
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
+    .pos-card-stack-first {
+        top: -124px;
+        left: -92px;
+    }
+    .pos-card-stack-second {
+        top: -140px;
+        left: -92px;
+    }
     .card-stack {
         bottom: 30%;
         img {
@@ -268,6 +292,14 @@
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
+    .pos-card-stack-first {
+        top: -136px;
+        left: -106px;
+    }
+    .pos-card-stack-second {
+        top: -152px;
+        left: -106px;
+    }
     .card-stack {
         bottom: 35%;
         img {
@@ -298,6 +330,14 @@
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (min-width: 1400px) {
+    .pos-card-stack-first {
+        top: -152px;
+        left: -112px;
+    }
+    .pos-card-stack-second {
+        top: -168px;
+        left: -112px;
+    }
     .card-stack {
         img {
             width: 160px;
