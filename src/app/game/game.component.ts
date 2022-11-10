@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogAddPlayerComponent } from '../dialog-add-player/dialog-add-player.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FirestoreService } from '../services/firestore.service';
+import { FirestoreService } from '../../services/firestore.service';
 import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-player.component';
 import { DialogGameSettingsComponent } from '../dialog-game-settings/dialog-game-settings.component';
 @Component({
