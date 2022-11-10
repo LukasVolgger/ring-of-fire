@@ -30,7 +30,9 @@
 
 .arrow:before,
 .arrow:after {
-    background: #3F51B5;
+    background: #28D7FE;
+    box-shadow: 0 0 3vw #28D7FE;
+    border-radius: 16px;
     content: '';
     display: block;
     height: 6px;
@@ -139,7 +141,8 @@
 }
 
 .player-counter {
-    color: white;
+    color: #FED128;
+    text-shadow: 0 0 3vw #FED128;
     font-weight: bold;
     text-align: center;
 }

@@ -25,6 +25,15 @@ body {
 }
 
 @font-face {
+    font-family: neon;
+    src: url('./assets/fonts/neon/neon.ttf');
+}
+
+@font-face {
     font-family: UnifrakturMaguntia;
     src: url('./assets/fonts/UnifrakturMaguntia/UnifrakturMaguntia-Regular.ttf');
+}
+
+.mat-mini-fab {
+    background-color: rgb(90 90 90 / 80%) !important;
 }
