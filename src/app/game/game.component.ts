@@ -55,9 +55,6 @@ export class GameComponent implements OnInit {
    */
   shareValues() {
     this.firestoreService.game = this.game;
-    this.firestoreService.game.documentID = this.gameID;
-
-    this.firestoreService.updateFirestore(this.gameID);
   }
 
   /**

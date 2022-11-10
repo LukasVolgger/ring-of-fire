@@ -9,7 +9,7 @@ export class Game {
     maxPlayerLimitReached: boolean = false;
     gameOver: boolean = false;
     backgroundImage: string = 'cherries_bg.svg';
-    documentID: string = '';
+    documentID: string = ''; // Currently unused
     timestamp: number = Date.now();
 
     constructor() {
