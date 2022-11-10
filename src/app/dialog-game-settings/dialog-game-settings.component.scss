@@ -11,8 +11,10 @@
     height: 90px;
     object-fit: cover;
     cursor: pointer;
+    border: 1px solid transparent;
     &:hover {
         filter: brightness(1.5);
+        border: 1px solid #426DFB;
     }
 }
 

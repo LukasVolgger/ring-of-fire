@@ -55,6 +55,46 @@ body {
     padding: 0 !important;
 }
 
+.mat-dialog-container {
+    background-image: url('./assets/img/action_bg/inactive_bg.svg');
+    background-size: cover;
+    background-position: 50% 50%;
+    border: 1px solid #426DFB !important;
+    border-radius: 4px !important;
+    color: #426DFB !important;
+}
+
+.mat-menu-item {
+    color: #426DFB !important;
+}
+
+.mat-menu-item:hover {
+    background-color: #527aff5d !important;
+    color: #28D7FE !important;
+}
+
+.mat-divider {
+    border-top-color: #426DFB !important;
+}
+
+.mat-menu-content {
+    background-image: url('./assets/img/action_bg/inactive_bg.svg');
+    background-size: cover;
+    background-position: 50% 50%;
+    border: 1px solid #426DFB !important;
+    color: #426DFB !important;
+    border-radius: 4px !important;
+}
+
+.mat-card-title {
+    color: #ff00cf;
+    text-shadow: 0 0 3vw #ff00cf;
+}
+
+.mat-simple-snackbar-action {
+    color: #426DFB;
+}
+
 .container {
     display: table-cell;
     text-align: center;
