@@ -49,7 +49,9 @@
     </div>
 
 </div>
-<div *ngIf="game.gameOver" class="game-over-screen">
-    <h2>Game Over</h2>
-    <button (click)="startNewGame()" mat-raised-button color="primary">Restart</button>
+<div class="game-over-screen fullscreen">
+    <div class="container">
+        <div class="neon">Game over</div>
+    </div>
+    <button class="restart-btn flux" (click)="startNewGame()" mat-raised-button color="primary">Restart</button>
 </div>

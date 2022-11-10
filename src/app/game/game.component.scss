@@ -180,6 +180,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 64px;
+    background-image: url('./../../assets/img/start_screen/wall.png');
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.restart-btn {
+    background-color: transparent;
+    padding: 22px;
+    cursor: pointer;
+    border: 4px solid #28D7FE;
+    border-radius: 16px;
+    &:hover {
+        border-color: #426DFB;
+        transition: all 225ms ease-in-out;
+    }
 }
 
 @media (max-width: 360px) {
