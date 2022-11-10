@@ -9,8 +9,8 @@
                 <div class="arrow arrow-second pos-card-stack-second"></div>
             </div>
             <!-- Card stack -->
-            <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
-            <img src="./../../assets/img/cards/cover/card_cover_1.svg" alt="" (click)="drawCard()" class="card top-card">
+            <img src="./../../assets/img/cards/card_cover.svg" alt="" *ngFor="let c of [0, 1, 2, 3, 4]; let i = index;" [ngStyle]="{'right.px': i * 5}">
+            <img src="./../../assets/img/cards/card_cover.svg" alt="" (click)="drawCard()" class="card top-card">
 
             <!-- Played cards -->
             <img src="./../../assets/img/cards/{{ playedCard }}.svg" alt="" *ngFor="let playedCard of game.playedCards" class="card played-card">
