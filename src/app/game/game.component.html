@@ -54,3 +54,10 @@
     </div>
     <button class="restart-btn flux" (click)="firestoreService.startNewGame()" mat-raised-button color="primary">Restart</button>
 </div>
+
+<div class="preloader" *ngIf="loader.loading">
+    <div class="loader-wrapper">
+        <div class="flux">Loading</div>
+        <div class="loading-spinner"></div>
+    </div>
+</div>

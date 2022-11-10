@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FirestoreService } from '../../services/firestore.service';
 import { DialogEditPlayerComponent } from '../dialog-edit-player/dialog-edit-player.component';
 import { DialogGameSettingsComponent } from '../dialog-game-settings/dialog-game-settings.component';
+import { LoadingHandlerService } from '../../services/loading-handler.service';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
@@ -18,8 +19,19 @@ export class GameComponent implements OnInit {
   maxPlayerLimit: number = 4;
   gameOver: boolean = false;
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog, public firestoreService: FirestoreService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, public firestoreService: FirestoreService, private router: Router, private _snackBar: MatSnackBar, public loader: LoadingHandlerService) {
+    this.loader.loadFromLocalStorage();
 
+    if (!this.loader.initialLoadCompleted) {
+      this.loader.loading = true;
+      this.loader.preloadImages();
+
+      setTimeout(() => {
+        this.loader.initialLoadCompleted = true;
+        localStorage.setItem('initialLoadCompleted', 'true');
+        this.loader.loading = false;
+      }, 5000)
+    }
   }
 
   /**
