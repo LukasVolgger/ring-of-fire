@@ -1,1 +1,7 @@
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!loading"></router-outlet>
+<div id="preloader" *ngIf="loading">
+    <div id="loader-wrapper">
+        <div class="flux">Loading</div>
+        <div id="loader"></div>
+    </div>
+</div>
