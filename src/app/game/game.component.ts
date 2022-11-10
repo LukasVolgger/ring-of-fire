@@ -18,7 +18,7 @@ export class GameComponent implements OnInit {
   maxPlayerLimit: number = 4;
   gameOver: boolean = false;
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog, private firestoreService: FirestoreService, private router: Router, private _snackBar: MatSnackBar) {
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, public firestoreService: FirestoreService, private router: Router, private _snackBar: MatSnackBar) {
 
   }
 
@@ -206,14 +206,6 @@ export class GameComponent implements OnInit {
       this.game.gameOver = true;
       this.firestoreService.updateFirestore(this.gameID);
     }
-  }
-
-  /**
-   * Redirects to start screen
-   */
-  startNewGame() {
-    this.router.navigateByUrl('');
-    this.firestoreService.deleteFromFirestore(this.gameID);
   }
 
 }

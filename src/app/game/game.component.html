@@ -49,9 +49,9 @@
     </div>
 
 </div>
-<div class="game-over-screen fullscreen">
+<div *ngIf="this.game.gameOver" class="game-over-screen fullscreen">
     <div class="container">
         <div class="neon">Game over</div>
     </div>
-    <button class="restart-btn flux" (click)="startNewGame()" mat-raised-button color="primary">Restart</button>
+    <button class="restart-btn flux" (click)="firestoreService.startNewGame()" mat-raised-button color="primary">Restart</button>
 </div>
