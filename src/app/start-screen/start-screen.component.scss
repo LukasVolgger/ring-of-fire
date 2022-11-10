@@ -140,15 +140,15 @@
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
     .content {
-        gap: 92px;
+        gap: 128px;
     }
     .neon {
-        font-size: 96px;
-        line-height: 18vw;
+        font-size: 128px;
+        line-height: 9vw;
     }
     .start-btn {
-        font-size: 36px;
-        padding: 8px;
+        font-size: 48px;
+        padding: 22px;
     }
     .credits {
         right: -64px;
