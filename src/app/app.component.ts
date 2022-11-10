@@ -8,6 +8,3 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ring-of-fire';
 }
-
-// ########################################################################################### DEVELOPMENT PAUSED
-// TODO Responsive design
