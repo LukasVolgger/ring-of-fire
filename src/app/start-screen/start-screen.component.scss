@@ -40,7 +40,6 @@
 .start-btn {
     background-color: transparent;
     padding: 22px;
-    border: none;
     cursor: pointer;
     border: 4px solid #28D7FE;
     border-radius: 16px;
@@ -82,10 +81,85 @@
 
 .credits {
     position: absolute;
-    right: 32px;
+    right: -64px;
     bottom: 32px;
+    transform: translate(-50%, -50%);
     font-family: neon;
     font-size: 24px;
     color: #ff00cf;
     text-shadow: 0 0 3vw #ff00cf;
+    text-align: center;
 }
+
+@media (max-width: 360px) {
+    .content {
+        gap: 92px;
+    }
+    .neon {
+        font-size: 96px;
+        line-height: 18vw;
+    }
+    .start-btn {
+        font-size: 36px;
+        padding: 8px;
+    }
+    .credits {
+        right: unset;
+        bottom: 8px;
+        left: 50%;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 360px) {
+    .content {
+        gap: 92px;
+    }
+    .neon {
+        font-size: 96px;
+        line-height: 18vw;
+    }
+    .start-btn {
+        font-size: 36px;
+        padding: 8px;
+    }
+    .credits {
+        right: unset;
+        bottom: 8px;
+        left: 50%;
+        font-size: 14px;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    .content {
+        gap: 92px;
+    }
+    .neon {
+        font-size: 96px;
+        line-height: 18vw;
+    }
+    .start-btn {
+        font-size: 36px;
+        padding: 8px;
+    }
+    .credits {
+        right: -64px;
+        bottom: 32px;
+        left: unset;
+        font-size: 22px;
+    }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {}
