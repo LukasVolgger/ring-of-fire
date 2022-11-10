@@ -157,10 +157,16 @@
 }
 
 .player-counter {
-    color: #FED128;
-    text-shadow: 0 0 3vw #FED128;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ff00cf;
+    text-shadow: 0 0 3vw #ff00cf;
     font-weight: bold;
     text-align: center;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
 }
 
 .menu-title {

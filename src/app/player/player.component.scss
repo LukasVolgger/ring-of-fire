@@ -1,18 +1,19 @@
 .player {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.8);
     padding: 16px;
     display: flex;
     align-items: center;
     gap: 16px;
     width: 180px;
+    border-radius: 16px;
     cursor: pointer;
     &:hover {
-        background-color: rgba(218, 216, 216, 0.8);
+        filter: brightness(1.2);
     }
     span {
         font-size: 24px;
         font-weight: 600;
+        color: #426DFB;
         word-break: break-word;
     }
 }
@@ -23,8 +24,14 @@
     border-radius: 50%;
 }
 
+.player-nr {
+    color: #ff00cf !important;
+    text-shadow: 0 0 3vw #ff00cf !important;
+}
+
 .player-active {
-    background-color: rgba(240, 219, 62, 0.8);
+    border-color: #ff00cf;
+    background-image: url('./../../assets/img/action_bg/active_bg.svg');
 }
 
 @media (max-width: 360px) {
