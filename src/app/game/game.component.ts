@@ -45,7 +45,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((param) => {
-      console.log('Game ID: ', param['gameID']);
+      // console.log('Game ID: ', param['gameID']);
       this.gameID = param['gameID'];
 
       this.firestoreService.getDataFromFirestore(this.gameID);
@@ -115,7 +115,7 @@ export class GameComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(change => { // Gets the name of the input from dialog-add-player
       if (change) {
-        console.log(change);
+        // console.log(change);
         this.game.backgroundImage = change;
         this.firestoreService.updateFirestore(this.gameID);
       }
