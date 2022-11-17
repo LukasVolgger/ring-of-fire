@@ -18,17 +18,19 @@ export class FirestoreService {
    * 4. Navigates to a new game with the unique gameID as URL
    */
   startNewGame() {
-    let game = new Game;
+    this.game = new Game;
     this.firestore
       .collection('games')
-      .add(game.toJSON())
+      .add(this.game.toJSON())
       .then((gameInfo) => {
         let gameID = gameInfo.id;
+        this.game.documentID = gameID;
 
         // console.log('Game ID: ', gameID);
 
         this.router.navigateByUrl('/game/' + gameID);
-      })
+        this.updateFirestore(gameID);
+      });
   }
 
   /**
