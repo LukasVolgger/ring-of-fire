@@ -8,7 +8,7 @@ export class Game {
     drawCardAnimation: boolean = false;
     maxPlayerLimitReached: boolean = false;
     gameOver: boolean = false;
-    backgroundImage: string = 'cherries_bg.svg';
+    backgroundImage: string = 'wood_bg.svg';
     documentID: string = ''; // Currently unused
     timestamp: number = Date.now();
 

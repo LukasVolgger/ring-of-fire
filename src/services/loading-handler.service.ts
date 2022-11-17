@@ -17,8 +17,11 @@ export class LoadingHandlerService {
     this.preloadImage('./../assets/img/action_bg/inactive_bg.svg');
     this.preloadImage('./../assets/img/background/cherries_bg.svg');
     this.preloadImage('./../assets/img/background/christmas_bg.svg');
+    this.preloadImage('./../assets/img/background/floral_bg.svg');
     this.preloadImage('./../assets/img/background/halloween_bg.svg');
+    this.preloadImage('./../assets/img/background/neon_bg.svg');
     this.preloadImage('./../assets/img/background/stars_bg.svg');
+    this.preloadImage('./../assets/img/background/thanksgiving_bg.svg');
     this.preloadImage('./../assets/img/background/wood_bg.svg');
     this.preloadImage('./../assets/img/players/bee.svg');
     this.preloadImage('./../assets/img/players/penguin.svg');
